@@ -1,3 +1,12 @@
+$(document).on("pagecreate","#pageone",function(){
+  $('#submitButton').on("click", function(){
+     testfunction();
+  });            
+});            
+
+
+
+
 
 function testfunction() {
   var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -31,69 +40,38 @@ function testfunction() {
   };
   document.getElementById('start').addEventListener('change', onChangeHandler);
   document.getElementById('end').addEventListener('change', onChangeHandler);
- //  document.getElementById('mytime').addEventListener('change', onChangeHandler);
+   document.getElementById('submitButton').addEventListener('click', onChangeHandler);
 }
+
 google.maps.event.addDomListener(window, 'load', testfunction);
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay, ) {
   var start = document.getElementById('start').value;
   var end = document.getElementById('end').value;
-//  var time = document.getElementById('mytime').value;
+var date = document.getElementById('mydate').value    
+ var time = document.getElementById('mytime').value;
+    
+    var date_obj = new Date(date + " " + time);
+    
+
+    
     directionsService.route({
-    origin: start,
-    destination: end,   
-    travelMode: 'TRANSIT'
-  // departureTime: time,    
+        origin: start,
+        destination: end,   
+        travelMode: 'TRANSIT',
+        transitOptions : {
+            departureTime: date_obj 
+        }
   }, function(response, status) {
     if (status === 'OK') {
       directionsDisplay.setDirections(response);
+        
+        console.log(response);
+        
     } else {
-      window.alert('Directions request failed due to ' + status);
+      //window.alert('Directions request failed due to ' + status);
     }
   });
     
 }
 
-
-
-
-/*
-function allinall(){
-var placeSearch, autocomplete, geocoder;
-
-function initAutocomplete() {
-  geocoder = new google.maps.Geocoder();
-  autocomplete = new google.maps.places.Autocomplete(
-      (document.getElementById('start'))
-
-  autocomplete.addListener('place_changed', fillInAddress);
-}
-
-function codeAddress(address) {
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == 'OK') {
-        alert(results[0].geometry.location);
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  }
-
-function fillInAddress() {
-  var place = autocomplete.getPlace();
-  alert(place.place_id);
-  //   codeAddress(document.getElementById('autocomplete').value);
-}
-}
-*/
-
-/*
-function bleh(){
-   var input = document.getElementById('right-panel');
-  var searchBox = new google.maps.places.SearchBox(input);
-  
-  map.addListener('bounds_changed', function() {
-    searchBox.setBounds(map.getBounds());
-  });
-}
-*/

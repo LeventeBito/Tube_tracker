@@ -4,10 +4,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <meta charset="utf-8">
-<link rel="stylesheet" href="jquerymobile/jquery.mobile-1.4.5.min.css">-->
+<link rel="stylesheet" href="jquerymobile/jquery.mobile-1.4.5.min.css">
 <link rel="stylesheet" href="index.css">
-<script src="jquerymobile/jquery-1.11.1.min.js"></script>
-<script src="jquerymobile/jquery.mobile-1.4.5.min.js"></script>
+<!--<script src="jquerymobile/jquery-1.11.1.min.js"></script>
+<script src="jquerymobile/jquery.mobile-1.4.5.min.js"></script>-->
 <!--<script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn__qjdqcfvl6zXthkIeltbb-8wmEPmgY&callback=initMap">
     </script>-->
@@ -16,7 +16,15 @@
 </head>
 <body>
 
-       
+
+   <div data-role="page">
+
+	<div data-role="header">
+		<h1>Page Title</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		
 <div id="right-panel">
   <strong>Start:</strong>
     <input type="text" id="start"><br>
@@ -24,15 +32,31 @@
     
   <strong>End:</strong>
     <input type="text" id="end"><br>
-  
+    
+    <strong>Select Date: </strong>
+    <input type="date" id="mydate"><br>
+    
     <strong>Select Time: </strong>
     <input type="time" id="mytime"><br>
     
     
     
-    <button type="submit" value="Submit">Submit</button>
+    <button type="submit" value="Submit" id="submitButton">Submit</button>
 </div>
-<div id="right-panel"></div>
+<div id="right-panel"></div>        
+        
+        
+	</div>
+       
+       
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+    
+    
+       
+
     
     <!--<div id="map"></div>
     
